@@ -65,7 +65,7 @@ about:
   summary: A framework for managing and maintaining multi-language pre-commit hooks.
   license_family: MIT
   dev_url: https://github.com/pre-commit/pre-commit
-  doc_url: https://github.com/pre-commit/pre-commit
+  doc_url: https://pre-commit.com/
 
 extra:
   recipe-maintainers:

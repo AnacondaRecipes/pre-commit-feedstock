@@ -61,6 +61,7 @@ outputs:
 about:
   home: https://pre-commit.com/
   license: MIT
+  license_family: MIT
   license_file: LICENSE
   summary: A framework for managing and maintaining multi-language pre-commit hooks.
   license_family: MIT

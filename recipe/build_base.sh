@@ -1,1 +1,5 @@
-${PYTHON} -m pip install . --no-deps -vv
+#!/bin/bash
+
+set -ex
+
+"${PYTHON}" -m pip install . --no-deps -vv

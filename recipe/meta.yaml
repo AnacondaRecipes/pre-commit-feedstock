@@ -1,20 +1,27 @@
-{% set version = "2.20.0" %}
+{% set version = "3.11.1" %}
 
 package:
-  name: pre-commit
+  name: pre-commit-split
   version: {{ version }}
 
 source:
   url: https://github.com/pre-commit/pre-commit/archive/v{{ version }}.tar.gz
-  sha256: 380ca8e6ea7d4b3d851b6656aa861e51fa52e023b82e2b0781d43a602f9cb81f
+  sha256: 6d3189fcb39dc97977d9f705b8f3bb570a613ef1e9cd598d958a82c503fda5a3
 
 build:
   number: 0
-  skip: true  # [py<37]
+  skip: true  # [py<38]
   entry_points:
     - pre-commit = pre_commit.main:main
     - pre-commit-validate-config = pre_commit.clientlib:validate_config_main
     - pre-commit-validate-manifest = pre_commit.clientlib:validate_manifest_main
+
+requirements:
+  host:
+    - pip
+    - python
+    - setuptools
+    - wheel
 
 outputs:
   - name: pre-commit
@@ -29,12 +36,10 @@ outputs:
       run:
         - cfgv >=2.0.0
         - identify >=1.0.0
-        - importlib_metadata  # [py<38]
         - nodeenv >=0.11.1
         - python
         - pyyaml >=5.1
-        - toml
-        - virtualenv >=20.0.8
+        - virtualenv >=20.10.0
     test:
       requires:
         - pip
@@ -64,7 +69,10 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: A framework for managing and maintaining multi-language pre-commit hooks.
-  license_family: MIT
+  description: |
+    pre-commit is a framework for managing and maintaining multi-language pre-commit hooks.
+    It allows you to ensure that your code meets quality standards before you commit changes.
+    pre-commit is language agnostic and plays nicely with other pre-commit tools.
   dev_url: https://github.com/pre-commit/pre-commit
   doc_url: https://pre-commit.com/
 

@@ -5,7 +5,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/pre-commit/pre-commit/archive/v{{ version }}.tar.gz
+  url: https://github.com/pre-commit/pre-commit/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 6d3189fcb39dc97977d9f705b8f3bb570a613ef1e9cd598d958a82c503fda5a3
 
 build:

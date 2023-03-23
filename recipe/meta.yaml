@@ -50,8 +50,8 @@ outputs:
       commands:
         - pip check
         - pre-commit --help
-        - pre-commit validate-config --help
-        - pre-commit validate-manifest --help
+        - pre-commit-validate-config --help
+        - pre-commit-validate-manifest --help
 
   - name: pre_commit
     build:

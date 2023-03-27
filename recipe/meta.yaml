@@ -47,9 +47,11 @@ outputs:
         - pre_commit
         - pre_commit.commands
         - pre_commit.languages
+        - pre_commit.meta_hooks
+        - pre_commit.resources
       commands:
         - pip check
-        - pre-commit --help
+        - pre-commit help
 
   - name: pre_commit
     build:

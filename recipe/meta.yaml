@@ -50,10 +50,6 @@ outputs:
       commands:
         - pip check
         - pre-commit --help
-        - pre-commit validate-config --help  # [not win]
-        - pre-commit validate-manifest --help  # [not win]
-        - pre-commit-validate-config --help  # [win]
-        - pre-commit-validate-manifest --help  # [win]
 
   - name: pre_commit
     build:

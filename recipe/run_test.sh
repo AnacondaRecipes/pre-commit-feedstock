@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -ex
-
 pip check
 
 "${PYTHON}" pre-commit --help

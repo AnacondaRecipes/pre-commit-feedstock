@@ -49,7 +49,7 @@ outputs:
         - pre_commit.resources
       commands:
         - pip check
-        - pre-commit -V
+        - python -m pre-commit -V
 
   - name: pre_commit
     build:

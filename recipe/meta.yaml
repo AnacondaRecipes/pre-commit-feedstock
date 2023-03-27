@@ -47,9 +47,7 @@ outputs:
         - pre_commit.languages
         - pre_commit.meta_hooks
         - pre_commit.resources
-      commands:
-        - pip check
-        - python -m pre-commit -V
+      # Test commands are in run_test.sh and run_test.bat
 
   - name: pre_commit
     build:

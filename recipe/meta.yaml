@@ -11,7 +11,6 @@ source:
 build:
   number: 0
   skip: true  # [py<38]
-  activate_in_script: true
   entry_points:
     - pre-commit = pre_commit.main:main
 

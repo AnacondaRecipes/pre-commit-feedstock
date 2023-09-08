@@ -11,8 +11,9 @@ source:
 build:
   number: 0
   skip: true  # [py<38]
-  #entry_points:
-  #  - pre-commit = pre_commit.main:main
+  activate_in_script: true
+  entry_points:
+    - pre-commit = pre_commit.main:main
 
 requirements:
   host:
@@ -26,16 +27,12 @@ outputs:
     build:
       script: build_base.bat  # [win]
       script: build_base.sh  # [not win]
-      activate_in_script: true
-      entry_points:
-        - pre-commit = pre_commit.main:main
     requirements:
       host:
         - pip
         - python
         - setuptools
         - wheel
-        - virtualenv
       run:
         - cfgv >=2.0.0
         - identify >=1.0.0
@@ -54,6 +51,7 @@ outputs:
         - pip
       commands:
         - pip check
+        - where pre-commit  # [win]
         - pre-commit -V
         - pre-commit --help
 

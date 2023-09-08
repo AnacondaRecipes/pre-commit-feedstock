@@ -23,9 +23,9 @@ requirements:
 
 outputs:
   - name: pre-commit
-    build:
-      script: build_base.bat  # [win]
-      script: build_base.sh  # [not win]
+    script: build_base.bat  # [win]
+    script: build_base.sh  # [not win]
+    activate_in_script: true
     requirements:
       host:
         - pip

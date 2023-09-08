@@ -11,8 +11,8 @@ source:
 build:
   number: 0
   skip: true  # [py<38]
-  entry_points:
-    - pre-commit = pre_commit.main:main
+  #entry_points:
+  #  - pre-commit = pre_commit.main:main
 
 requirements:
   host:
@@ -23,8 +23,11 @@ requirements:
 
 outputs:
   - name: pre-commit
-    script: build_base.bat  # [win]
-    script: build_base.sh  # [not win]
+    build:
+      script: build_base.bat  # [win]
+      script: build_base.sh  # [not win]
+      entry_points:
+        - pre-commit = pre_commit.main:main
     requirements:
       host:
         - pip
@@ -50,8 +53,8 @@ outputs:
         - pip
       commands:
         - pip check
-        - python3 -m pre-commit -V
-        - python3 -m pre-commit --help
+        - pre-commit -V
+        - pre-commit --help
 
   # - name: pre_commit
   #   build:

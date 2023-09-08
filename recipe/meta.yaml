@@ -31,6 +31,7 @@ outputs:
         - python
         - setuptools
         - wheel
+        - virtualenv
       run:
         - cfgv >=2.0.0
         - identify >=1.0.0
@@ -49,10 +50,8 @@ outputs:
         - pip
       commands:
         - pip check
-        - pre-commit -V      # [not win]
-        - pre-commit --help  # [not win]
-        - pre_commit.main -V      # [win]
-        - pre_commit.main --help  # [win]
+        - python3 -m pre-commit -V
+        - python3 -m pre-commit --help
 
   # - name: pre_commit
   #   build:

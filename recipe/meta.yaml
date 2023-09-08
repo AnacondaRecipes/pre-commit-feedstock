@@ -49,8 +49,10 @@ outputs:
         - pip
       commands:
         - pip check
-        - pre-commit -V
-        - pre-commit --help
+        - pre-commit -V      # [not win]
+        - pre-commit --help  # [not win]
+        - pre_commit.main -V      # [win]
+        - pre_commit.main --help  # [win]
 
   # - name: pre_commit
   #   build:

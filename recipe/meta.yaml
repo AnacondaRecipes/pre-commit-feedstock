@@ -26,6 +26,7 @@ outputs:
     build:
       script: build_base.bat  # [win]
       script: build_base.sh  # [not win]
+      activate_in_script: true
       entry_points:
         - pre-commit = pre_commit.main:main
     requirements:

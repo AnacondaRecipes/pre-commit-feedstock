@@ -22,8 +22,8 @@ requirements:
 
 outputs:
   - name: pre-commit
-    build:  # [unix]
-      script: python -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv  # [unix]
+    build:
+      script: python setup.py install --no-deps --no-build-isolation -vv
     requirements:
       host:
         - pip

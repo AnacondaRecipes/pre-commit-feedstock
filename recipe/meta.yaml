@@ -23,7 +23,8 @@ requirements:
 outputs:
   - name: pre-commit
     build:
-      script: python -m pip install . --no-deps --no-build-isolation -vv
+      script: python -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
+      script: CALL "%PREFIX%\Scripts\pre-commit.exe" install || EXIT /B 1  # [win]
     requirements:
       host:
         - pip

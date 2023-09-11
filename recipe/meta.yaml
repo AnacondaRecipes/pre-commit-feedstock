@@ -10,7 +10,6 @@ source:
 
 build:
   number: 0
-  noarch: python
   entry_points:
     - pre-commit=pre_commit.main:main
 
@@ -24,7 +23,7 @@ requirements:
 outputs:
   - name: pre-commit
     build:
-      script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
+      script: python -m pip install . --no-deps --no-build-isolation -vv
     requirements:
       host:
         - pip

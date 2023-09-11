@@ -1,2 +1,2 @@
 %PYTHON% -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
-CALL "%PREFIX%\Scripts\pre-commit.exe" install
+COPY "%PREFIX%\Scripts\pre-commit.exe" "%SP_DIR%\Scripts\pre-commit.exe"

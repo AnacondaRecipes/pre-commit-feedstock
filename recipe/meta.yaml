@@ -24,6 +24,7 @@ outputs:
   - name: pre-commit
     build:
       script: python -m pip install . --no-deps --no-build-isolation -vv
+      script: del %PREFIX%\\Scripts\\pre-commit.exe  # [win]
     requirements:
       host:
         - pip

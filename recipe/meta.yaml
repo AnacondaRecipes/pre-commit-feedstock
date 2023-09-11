@@ -23,7 +23,7 @@ requirements:
 outputs:
   - name: pre-commit
     build:
-      script: python setup.py install --no-deps --no-build-isolation -vv
+      script: python setup.py install -vv
     requirements:
       host:
         - pip

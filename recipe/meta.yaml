@@ -1,4 +1,4 @@
-{% set version = "3.4.0" %}
+{% set version = "3.2.1" %}
 
 package:
   name: pre-commit-split
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://github.com/pre-commit/pre-commit/archive/v{{ version }}.tar.gz
-  sha256: 65d63b57ddec920b09ffdf09536a480d6883eb5069eb295daab6d3fe151e34d3
+  sha256: 5cc587e824a9dde28e2668f3da547da10607f7e531bdf8a6c1e8a9bdc7134570
 
 build:
-  number: 0
+  number: 1
   entry_points:
-    - pre-commit=pre_commit.main:main
+    - pre-commit = pre_commit.main:main
 
 requirements:
   host:
@@ -23,7 +23,7 @@ requirements:
 outputs:
   - name: pre-commit
     build:
-      script: python setup.py install --single-version-externally-managed --record=record.txt
+      script: {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
     requirements:
       host:
         - pip
@@ -52,15 +52,15 @@ outputs:
         - pre-commit -V
         - pre-commit --help
 
-  # - name: pre_commit
-  #   build:
-  #     noarch: generic
-  #   requirements:
-  #     run:
-  #       - {{ pin_subpackage('pre-commit', max_pin="x.x.x") }}
-  #   test:
-  #     imports:
-  #       - pre_commit
+  - name: pre_commit
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage('pre-commit', max_pin="x.x.x") }}
+    test:
+      imports:
+        - pre_commit
 
 about:
   home: https://pre-commit.com/

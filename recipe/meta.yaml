@@ -1,6 +1,8 @@
 {% set version = "3.2.1" %}
 
 package:
+  # Don't change the package name to `pre-commit-split` or `pre-commit-suite`,
+  # because it will break creation if `entry_points` on win64.
   name: pre-commit
   version: {{ version }}
 
@@ -47,7 +49,8 @@ outputs:
     test:
       imports:
         - pre_commit
-  
+
+# Do not move this section to `outputs` section because it will be skipped by conda-build.
 test:
   imports:
     - pre_commit

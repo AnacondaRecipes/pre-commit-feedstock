@@ -50,7 +50,7 @@ outputs:
       commands:
         - pip check
         - where pre-commit  # [win]
-        - /debugexe pre-commit.exe  # [win]
+        - debug %PREFIX%\Scripts\pre-commit.exe  # [win]
         - pre-commit -V
         - pre-commit --help
 

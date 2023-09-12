@@ -22,8 +22,7 @@ requirements:
 
 outputs:
   - name: pre-commit
-    script: 
-      - python -m pip install . -vv --no-deps --no-build-isolation
+    script: python -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
         - pip <21.0

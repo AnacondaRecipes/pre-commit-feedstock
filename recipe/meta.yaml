@@ -1,4 +1,4 @@
-{% set version = "3.2.1" %}
+{% set version = "3.4.0" %}
 
 package:
   # Don't change the package name to `pre-commit-split` or `pre-commit-suite`,
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://github.com/pre-commit/pre-commit/archive/v{{ version }}.tar.gz
-  sha256: 5cc587e824a9dde28e2668f3da547da10607f7e531bdf8a6c1e8a9bdc7134570
+  sha256: 65d63b57ddec920b09ffdf09536a480d6883eb5069eb295daab6d3fe151e34d3
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - pre-commit = pre_commit.main:main
 

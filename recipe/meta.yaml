@@ -24,7 +24,9 @@ requirements:
 outputs:
   - name: pre-commit
     build:
-      script: python -m pip install . -vv --no-deps --no-build-isolation
+      script: 
+        - python -m pip install . -vv --no-deps --no-build-isolation
+        - COPY %RECIPE_DIR$\pre-commit-script.py %PREFIX%\Scripts\pre-commit-script.py  # [win]
     requirements:
       host:
         - pip

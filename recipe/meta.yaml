@@ -17,17 +17,19 @@ requirements:
   host:
     - pip
     - python
-    - setuptools <60
+    - setuptools
     - wheel
 
 outputs:
   - name: pre-commit
-    script: python -m pip install . -vv --no-deps --no-build-isolation
+    build:
+      script: 
+        - python -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
         - pip
         - python
-        - setuptools <60
+        - setuptools
         - wheel
       run:
         - cfgv >=2.0.0
@@ -48,6 +50,7 @@ outputs:
       commands:
         - pip check
         - where pre-commit  # [win]
+        - /debugexe pre-commit.exe  # [win]
         - pre-commit -V
         - pre-commit --help
 

@@ -10,7 +10,8 @@ source:
 
 build:
   number: 1
-  noarch: python
+  script: 
+    - python -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - pre-commit = pre_commit.main:main
 
@@ -23,10 +24,6 @@ requirements:
 
 outputs:
   - name: pre-commit
-    build:
-      script: 
-        - python -m pip install . -vv --no-deps --no-build-isolation
-        - COPY %RECIPE_DIR$\pre-commit-script.py %PREFIX%\Scripts\pre-commit-script.py  # [win]
     requirements:
       host:
         - pip

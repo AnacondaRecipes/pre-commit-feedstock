@@ -10,8 +10,6 @@ source:
 
 build:
   number: 1
-  script: 
-    - python -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - pre-commit = pre_commit.main:main
 
@@ -24,9 +22,11 @@ requirements:
 
 outputs:
   - name: pre-commit
+    script: 
+      - python -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
-        - pip
+        - pip <21.0
         - python
         - setuptools
         - wheel

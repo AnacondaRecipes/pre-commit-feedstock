@@ -1,7 +1,7 @@
 {% set version = "3.2.1" %}
 
 package:
-  name: pre-commit-split
+  name: pre-commit
   version: {{ version }}
 
 source:

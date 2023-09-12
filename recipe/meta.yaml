@@ -25,9 +25,9 @@ outputs:
     script: python -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
-        - pip <2.0
+        - pip
         - python
-        - setuptools
+        - setuptools <60
         - wheel
       run:
         - cfgv >=2.0.0

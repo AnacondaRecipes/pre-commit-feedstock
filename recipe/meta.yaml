@@ -25,7 +25,7 @@ outputs:
     script: python -m pip install . -vv --no-deps --no-build-isolation
     requirements:
       host:
-        - pip <23.0
+        - pip <2.0
         - python
         - setuptools
         - wheel

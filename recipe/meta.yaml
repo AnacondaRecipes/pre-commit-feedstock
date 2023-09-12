@@ -17,7 +17,7 @@ requirements:
   host:
     - pip
     - python
-    - setuptools
+    - setuptools <60
     - wheel
 
 outputs:

@@ -10,8 +10,6 @@ source:
 
 build:
   number: 1
-  script: 
-    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   entry_points:
     - pre-commit = pre_commit.main:main
 
@@ -21,55 +19,48 @@ requirements:
     - python
     - setuptools
     - wheel
-  run:
-    - cfgv >=2.0.0
-    - identify >=1.0.0
-    - nodeenv >=0.11.1
-    - python
-    - pyyaml >=5.1
-    - virtualenv >=20.10.0
-# outputs:
-#   - name: pre-commit
-#     build:
-#       script: 
-#         - python -m pip install . -vv --no-deps --no-build-isolation
-#     requirements:
-#       host:
-#         - pip
-#         - python
-#         - setuptools
-#         - wheel
-#       run:
-#         - cfgv >=2.0.0
-#         - identify >=1.0.0
-#         - nodeenv >=0.11.1
-#         - python
-#         - pyyaml >=5.1
-#         - virtualenv >=20.10.0
-test:
-  imports:
-    - pre_commit
-    - pre_commit.commands
-    - pre_commit.languages
-    - pre_commit.meta_hooks
-    - pre_commit.resources
-  requires:
-    - pip
-  commands:
-    - pip check
-    - where pre-commit  # [win]
-    - pre-commit -V
-    - pre-commit --help
 
-  # - name: pre_commit
-  #   build:
-  #     noarch: generic
-  #   requirements:
-  #     run:
-  #       - {{ pin_subpackage('pre-commit', max_pin="x.x.x") }}
-  #   test:
-  #     imports:
-  #       - pre_commit
+outputs:
+  - name: pre-commit
+    script: build_base.bat  # [win]
+    script: build_base.sh  # [not win]
+    requirements:
+      host:
+        - pip
+        - python
+        - setuptools
+        - wheel
+      run:
+        - cfgv >=2.0.0
+        - identify >=1.0.0
+        - nodeenv >=0.11.1
+        - python
+        - pyyaml >=5.1
+        - virtualenv >=20.10.0
+    test:
+      imports:
+        - pre_commit
+        - pre_commit.commands
+        - pre_commit.languages
+        - pre_commit.meta_hooks
+        - pre_commit.resources
+      requires:
+        - pip
+      commands:
+        - pip check
+        - where pre-commit  # [win]
+        - pre-commit -V
+        - pre-commit --help
+
+  - name: pre_commit
+    build:
+      noarch: generic
+    requirements:
+      run:
+        - {{ pin_subpackage('pre-commit', max_pin="x.x.x") }}
+    test:
+      imports:
+        - pre_commit
 
 about:
   home: https://pre-commit.com/

@@ -9,10 +9,8 @@ source:
   sha256: 5cc587e824a9dde28e2668f3da547da10607f7e531bdf8a6c1e8a9bdc7134570
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<38]
-  entry_points:
-    - pre-commit = pre_commit.main:main
 
 requirements:
   host:
@@ -25,6 +23,10 @@ outputs:
   - name: pre-commit
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
+    build:
+      skip: true  # [py<38]
+      entry_points:
+        - pre-commit = pre_commit.main:main
     requirements:
       host:
         - pip
@@ -39,15 +41,19 @@ outputs:
         - pyyaml >=5.1
         - virtualenv >=20.10.0
     test:
-      requires:
-        - pip
       imports:
         - pre_commit
         - pre_commit.commands
         - pre_commit.languages
         - pre_commit.meta_hooks
         - pre_commit.resources
-      # Test commands are in run_test.sh and run_test.bat
+      requires:
+        - pip
+      commands:
+        - pip check
+        - where pre-commit  # [win]
+        - pre-commit -V
+        - pre-commit --help
 
   - name: pre_commit
     build:

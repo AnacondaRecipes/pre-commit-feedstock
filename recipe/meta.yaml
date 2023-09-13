@@ -1,9 +1,7 @@
 {% set version = "3.4.0" %}
 
 package:
-  # Don't change the package name to `pre-commit-split` or `pre-commit-suite`,
-  # because it will break creation if `entry_points` on win64.
-  name: pre-commit
+  name: pre-commit-split
   version: {{ version }}
 
 source:
@@ -11,9 +9,8 @@ source:
   sha256: 65d63b57ddec920b09ffdf09536a480d6883eb5069eb295daab6d3fe151e34d3
 
 build:
-  number: 0
-  entry_points:
-    - pre-commit = pre_commit.main:main
+  number: 1
+  skip: true  # [py<38]
 
 requirements:
   host:
@@ -26,6 +23,10 @@ outputs:
   - name: pre-commit
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
+    build:
+      skip: true  # [py<38]
+      entry_points:
+        - pre-commit = pre_commit.main:main
     requirements:
       host:
         - pip
@@ -39,6 +40,20 @@ outputs:
         - python
         - pyyaml >=5.1
         - virtualenv >=20.10.0
+    test:
+      imports:
+        - pre_commit
+        - pre_commit.commands
+        - pre_commit.languages
+        - pre_commit.meta_hooks
+        - pre_commit.resources
+      requires:
+        - pip
+      commands:
+        - pip check
+        - where pre-commit  # [win]
+        - pre-commit -V
+        - pre-commit --help
 
   - name: pre_commit
     build:
@@ -49,22 +64,6 @@ outputs:
     test:
       imports:
         - pre_commit
-
-# Do not move this section to `outputs` section because it will be skipped by conda-build.
-test:
-  imports:
-    - pre_commit
-    - pre_commit.commands
-    - pre_commit.languages
-    - pre_commit.meta_hooks
-    - pre_commit.resources
-  requires:
-    - pip
-  commands:
-    - pip check
-    - where pre-commit  # [win]
-    - pre-commit -V
-    - pre-commit --help
 
 about:
   home: https://pre-commit.com/

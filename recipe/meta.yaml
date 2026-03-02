@@ -1,4 +1,4 @@
-{% set version = "3.4.0" %}
+{% set version = "4.5.1" %}
 
 package:
   name: pre-commit-split
@@ -6,11 +6,11 @@ package:
 
 source:
   url: https://github.com/pre-commit/pre-commit/archive/v{{ version }}.tar.gz
-  sha256: 65d63b57ddec920b09ffdf09536a480d6883eb5069eb295daab6d3fe151e34d3
+  sha256: ddfbb07ab492c30086af097c8346d8c4d0fc2fd3d5c19129e2df86c4db9e4aa9
 
 build:
-  number: 1
-  skip: true  # [py<38]
+  number: 0
+  skip: true  # [py<310]
 
 requirements:
   host:
@@ -24,7 +24,7 @@ outputs:
     script: build_base.bat  # [win]
     script: build_base.sh  # [not win]
     build:
-      skip: true  # [py<38]
+      skip: true  # [py<310]
       entry_points:
         - pre-commit = pre_commit.main:main
     requirements:
@@ -43,10 +43,30 @@ outputs:
     test:
       imports:
         - pre_commit
+        - pre_commit.all_languages
+        - pre_commit.clientlib
+        - pre_commit.color
         - pre_commit.commands
+        - pre_commit.constants
+        - pre_commit.envcontext
+        - pre_commit.error_handler
+        - pre_commit.errors
+        - pre_commit.git
+        - pre_commit.hook
+        - pre_commit.lang_base
         - pre_commit.languages
+        - pre_commit.logging_handler
+        - pre_commit.main
         - pre_commit.meta_hooks
-        - pre_commit.resources
+        - pre_commit.parse_shebang
+        - pre_commit.prefix
+        - pre_commit.repository
+        - pre_commit.staged_files_only
+        - pre_commit.store
+        - pre_commit.util
+        - pre_commit.xargs
+        - pre_commit.yaml
+        - pre_commit.yaml_rewrite
       requires:
         - pip
       commands:
@@ -66,7 +86,7 @@ outputs:
         - pre_commit
 
 about:
-  home: https://pre-commit.com/
+  home: https://pre-commit.com
   license: MIT
   license_family: MIT
   license_file: LICENSE
@@ -76,7 +96,7 @@ about:
     It allows you to ensure that your code meets quality standards before you commit changes.
     pre-commit is language agnostic and plays nicely with other pre-commit tools.
   dev_url: https://github.com/pre-commit/pre-commit
-  doc_url: https://pre-commit.com/
+  doc_url: https://pre-commit.com
 
 extra:
   recipe-maintainers:
